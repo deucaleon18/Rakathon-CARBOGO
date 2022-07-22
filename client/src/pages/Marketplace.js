@@ -1,5 +1,6 @@
 import { useState ,useEffect} from "react";
 import useEth from "../contexts/EthContext/useEth";
+import "../styles/Marketplace.css"
 
 function Marketplace() {
   const { state: { web3,contract1,contract2, accounts,address1,address2 } } = useEth();
@@ -91,9 +92,9 @@ function Marketplace() {
 
 
   return (
-    <div className="btns">
+    <div className="Market">
 
-      <button onClick={mintAndListNft}>
+      <button className="btns" onClick={mintAndListNft}>
         MINT NFT
       </button>
       

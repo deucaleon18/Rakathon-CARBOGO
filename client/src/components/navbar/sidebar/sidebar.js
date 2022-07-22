@@ -1,4 +1,4 @@
-
+import PropTypes from "prop-types";
 import  "./sidebar.css";
 
 function Sidebar({ state, closeHandler }) {
@@ -37,4 +37,8 @@ function Sidebar({ state, closeHandler }) {
   
 }
 
+Sidebar.propTypes = {
+    state: PropTypes.bool,
+  };
+  
 export default Sidebar;

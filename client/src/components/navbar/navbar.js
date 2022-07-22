@@ -33,14 +33,14 @@ function Navbar({ page }) {
             </div>
 
             <div className="menuListItem">
-              <a href="/">EVENT</a>
+              <a href="/factories">FACTORIES</a>
+            </div>
+            <div className="menuListItem">
+              <a href="/factoriesregistration">REGISTRATION</a>
             </div>
 
             <div className="menuListItem">
-              <a href="/">ABOUT US</a>
-            </div>
-            <div className="menuListItem">
-              <a href="/">ALUMNI</a>
+              <a href="/">SELL NFT</a>
             </div>
           </div>
 
