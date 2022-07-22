@@ -16,11 +16,30 @@ error NotOwner();
 error NotApprovedForMarketplace();
 error PriceMustBeAboveZero();
 
+
 contract NftMarketplace is ReentrancyGuard {
+
     struct Listing {
         uint256 price;
         address seller;
     }
+    struct Factory{
+
+         uint256 electricity;
+         address owner;
+         uint256 paper;
+         uint256 water;
+
+    }
+    event FactoryCreated(
+
+       address owner
+    );
+    event FactoryEdited(
+        address owner,
+        uint256 paper,
+        uint256 electricity,
+        uint256 water);
 
     event ItemListed(
         address indexed seller,
@@ -44,6 +63,7 @@ contract NftMarketplace is ReentrancyGuard {
 
     mapping(address => mapping(uint256 => Listing)) private s_listings;
     mapping(address => uint256) private s_proceeds;
+    mapping(address=> Factory) private s_factories;
 
     modifier notListed(
         address nftAddress,
@@ -77,10 +97,23 @@ contract NftMarketplace is ReentrancyGuard {
         }
         _;
     }
+
+
+
+
+
+
     /////////////////////
     // Main Functions //
     /////////////////////
     /*
+
+    
+
+
+
+
+
      * @notice Method for listing NFT
      * @param nftAddress Address of NFT contract
      * @param tokenId Token ID of NFT
@@ -106,6 +139,20 @@ contract NftMarketplace is ReentrancyGuard {
         emit ItemListed(msg.sender, nftAddress, tokenId, price);
     }
 
+    function addFactory(address _owner) public{
+
+        s_factories[_owner]=Factory(0,_owner,0,0);
+        emit FactoryCreated(s_factories[_owner].owner);
+    }
+
+    function editFactory(address _owner,uint256 _electricity,uint256 _paper,uint256 _water) public{
+        
+        s_factories[_owner].electricity+=_electricity;
+        s_factories[_owner].paper+=_paper;
+        s_factories[_owner].water+=_water;
+       emit FactoryEdited(s_factories[_owner].owner,s_factories[_owner].paper,s_factories[_owner].electricity,s_factories[_owner].water);
+
+    }
     /*
      * @notice Method for cancelling listing
      * @param nftAddress Address of NFT contract
@@ -198,4 +245,10 @@ contract NftMarketplace is ReentrancyGuard {
     function getProceeds(address seller) external view returns (uint256) {
         return s_proceeds[seller];
     }
+
+
+
+
+
+
 }
