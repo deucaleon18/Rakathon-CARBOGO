@@ -25,13 +25,13 @@ function EthProvider({ children }) {
           
           contract1 = new web3.eth.Contract(abi1, address1);
           contract2 = new web3.eth.Contract(abi2, address2);
-          console.log(contract1,contract2)
+       
         } catch (err) {
           console.error(err);
         }
         dispatch({
           type: actions.init,
-          data: { artifact1,artifact2, web3, accounts, networkID, contract1,contract2 }
+          data: { artifact1,artifact2, web3, accounts,address1,address2, networkID, contract1,contract2 }
         });
       }
     }, []);

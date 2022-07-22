@@ -13,7 +13,7 @@ error NotListed(address nftAddress, uint256 tokenId);
 error AlreadyListed(address nftAddress, uint256 tokenId);
 error NoProceeds();
 error NotOwner();
-error NotApprovedForMarketplace();
+// error NotApprovedForMarketplace();
 error PriceMustBeAboveZero();
 
 
@@ -132,9 +132,9 @@ contract NftMarketplace is ReentrancyGuard {
             revert PriceMustBeAboveZero();
         }
         IERC721 nft = IERC721(nftAddress);
-        if (nft.getApproved(tokenId) != address(this)) {
-            revert NotApprovedForMarketplace();
-        }
+        // if (nft.getApproved(tokenId) != address(this)) {
+        //     revert NotApprovedForMarketplace();
+        // }
         s_listings[nftAddress][tokenId] = Listing(price, msg.sender);
         emit ItemListed(msg.sender, nftAddress, tokenId, price);
     }
@@ -179,7 +179,7 @@ contract NftMarketplace is ReentrancyGuard {
         external
         payable
         isListed(nftAddress, tokenId)
-        nonReentrant
+      
     {
         // Challenge - How would you refactor this contract to take:
         // 1. Abitrary tokens as payment? (HINT - Chainlink Price Feeds!)
@@ -241,6 +241,8 @@ contract NftMarketplace is ReentrancyGuard {
     {
         return s_listings[nftAddress][tokenId];
     }
+
+    
 
     function getProceeds(address seller) external view returns (uint256) {
         return s_proceeds[seller];

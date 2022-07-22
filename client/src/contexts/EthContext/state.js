@@ -3,6 +3,8 @@ const actions = {
 };
 
 const initialState = {
+  address1:null,
+  address2:null,
   artifact1: null,
   artifact2:null,
   web3: null,
