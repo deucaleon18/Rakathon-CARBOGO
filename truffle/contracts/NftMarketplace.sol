@@ -24,7 +24,8 @@ contract NftMarketplace is ReentrancyGuard {
         address seller;
     }
     struct Factory{
-
+         string  person;
+         string  factoryName;
          uint256 electricity;
          address owner;
          uint256 paper;
@@ -33,7 +34,9 @@ contract NftMarketplace is ReentrancyGuard {
     }
     event FactoryCreated(
 
-       address owner
+       address owner,
+       string person,
+       string factoryName
     );
     event FactoryEdited(
         address owner,
@@ -139,10 +142,10 @@ contract NftMarketplace is ReentrancyGuard {
         emit ItemListed(msg.sender, nftAddress, tokenId, price);
     }
 
-    function addFactory(address _owner) public{
+    function addFactory(address _owner,string memory _person, string memory _factoryName) public{
 
-        s_factories[_owner]=Factory(0,_owner,0,0);
-        emit FactoryCreated(s_factories[_owner].owner);
+        s_factories[_owner]=Factory(_person,_factoryName,0,_owner,0,0);
+        emit FactoryCreated(s_factories[_owner].owner,s_factories[_owner].person,s_factories[_owner].factoryName);
     }
 
     function editFactory(address _owner,uint256 _electricity,uint256 _paper,uint256 _water) public{

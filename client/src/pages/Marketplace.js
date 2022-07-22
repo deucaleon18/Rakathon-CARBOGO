@@ -4,6 +4,8 @@ import "../styles/Marketplace.css"
 
 function Marketplace() {
   const { state: { web3,contract1,contract2, accounts,address1,address2 } } = useEth();
+
+  
   const [tokenId,setTokenId]=useState(0)
   const [nftCount,setNftCount]=useState(0)
 //   let nfts=[]
