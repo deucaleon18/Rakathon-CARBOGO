@@ -178,10 +178,10 @@ contract NftMarketplace is ReentrancyGuard {
      * @param nftAddress Address of NFT contract
      * @param tokenId Token ID of NFT
      */
-    function buyItem(address nftAddress, uint256 tokenId)
+    function buyItem(address payable nftAddress, uint256 tokenId)
         external
         payable
-        isListed(nftAddress, tokenId)
+        // isListed(nftAddress, tokenId)
       
     {
         // Challenge - How would you refactor this contract to take:
@@ -189,10 +189,10 @@ contract NftMarketplace is ReentrancyGuard {
         // 2. Be able to set prices in other currencies?
         // 3. Tweet me @PatrickAlphaC if you come up with a solution!
         Listing memory listedItem = s_listings[nftAddress][tokenId];
-        if (msg.value < listedItem.price) {
-            revert PriceNotMet(nftAddress, tokenId, listedItem.price);
-        }
-        s_proceeds[listedItem.seller] += msg.value;
+        // if (msg.value < listedItem.price) {
+        //     revert PriceNotMet(nftAddress, tokenId, listedItem.price);
+        // }
+        s_proceeds[listedItem.seller] += listedItem.price;
         // Could just send the money...
         // https://fravoll.github.io/solidity-patterns/pull_over_push.html
         delete (s_listings[nftAddress][tokenId]);
