@@ -6,11 +6,13 @@ module.exports = {
       network_id: '*' // Match any network id
     }
   },
-  solc: {
-    version:"native",
+  compilers:{
+    solc: {
+    version:"0.8.15",
     optimizer: {
       enabled: true,
       runs: 200
     }
   }
+}
 }

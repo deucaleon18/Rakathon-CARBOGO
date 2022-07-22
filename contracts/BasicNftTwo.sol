@@ -7,15 +7,15 @@ contract BasicNftTwo is ERC721 {
     string public constant TOKEN_URI = "ipfs://QmdryoExpgEQQQgJPoruwGJyZmz6SqV4FRTX1i73CT3iXn";
     uint256 private s_tokenCounter;
 
-    event DogMinted(uint256 indexed tokenId);
+    event CarbonMinted(uint256 indexed tokenId);
 
-    constructor() ERC721("Dogie", "DOG") {
+    constructor() ERC721("CarboCred", "CC") {
         s_tokenCounter = 0;
     }
 
     function mintNft() public {
         _safeMint(msg.sender, s_tokenCounter);
-        emit DogMinted(s_tokenCounter);
+        emit CarbonMinted(s_tokenCounter);
         s_tokenCounter = s_tokenCounter + 1;
     }
 
