@@ -6,8 +6,9 @@
 }
 
 .Market .btns {
-    width: 30%;
+    width: 25%;
     height: 80px;
+    margin: 20px;
     border: 0.1px solid #397e30;
     background-color: rgba(0, 43, 3, 0.356);
     color: white;

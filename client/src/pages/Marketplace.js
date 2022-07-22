@@ -100,7 +100,7 @@ function Marketplace() {
         MINT NFT
       </button>
       
-      <button onClick={buyNft}>
+      <button className="btns" onClick={buyNft}>
         BUY NFT
       </button>
 

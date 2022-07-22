@@ -40,7 +40,7 @@ function Navbar({ page }) {
             </div>
 
             <div className="menuListItem">
-              <a href="/">SELL NFT</a>
+              <a href="/sellcredit">SELL NFT</a>
             </div>
           </div>
 
