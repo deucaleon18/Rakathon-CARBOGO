@@ -1,0 +1,36 @@
+.sidebar {
+    height: 100%;
+    background: #180334ef;
+    color: white;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%;
+    max-width: 320px;
+    z-index: 200;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    cursor: pointer;
+}
+.menulist {
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-top: 60px;
+  
+}
+
+.menulistItem {
+  margin: 15px 30px;
+  font-size: 1.25rem;
+}
+.menulistItem :hover {
+  color: white;
+}
+.menulistItem a {
+  text-decoration: none;
+  color: black;
+}
