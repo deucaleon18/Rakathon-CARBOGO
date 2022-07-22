@@ -1,0 +1,21 @@
+.details {
+    display: flex;
+    padding: 0 50px;
+}
+.details img {
+    width : 700px;
+    height: 550px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.detailsDiv {
+    position: relative;
+    width:   900px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    align-items: center;
+    background: rgba(0, 90, 0, 0.685);
+    border-radius: 12px;
+}
