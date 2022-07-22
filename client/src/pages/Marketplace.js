@@ -26,7 +26,8 @@ function Marketplace() {
       <button onClick={mintAndListNft}>
         MINT NFT
       </button>
-
+      
+      
 
     </div>
   );
