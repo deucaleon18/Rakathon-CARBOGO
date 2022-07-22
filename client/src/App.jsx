@@ -12,7 +12,6 @@ function App() {
     <EthProvider>
       <div id="App" >
         <div className="container">
-          <h1  style={{color: "white"}}>Welcome to CARBOGO</h1>
           <img className="Background" src="Images/Background.png" alt="" />
         </div>
       </div>

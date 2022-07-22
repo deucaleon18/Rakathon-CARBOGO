@@ -1,7 +1,7 @@
 .sidebar {
     height: 100%;
-    background: #180334ef;
-    color: white;
+    background: white;
+    color: black;
     position: fixed;
     top: 0;
     right: 0;
@@ -14,6 +14,25 @@
     flex-direction: column;
     cursor: pointer;
 }
+.cross {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: clamp(240px,19.4vw,280px);
+}
+.cross img {
+    margin-top: 20px;
+    cursor: pointer;
+}
+.backdrop {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    min-width: 100vw;
+    min-height: 100% !important;
+    height: 100%;
+  }
 .menulist {
   list-style: none;
   display: flex;

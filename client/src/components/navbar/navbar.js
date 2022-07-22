@@ -24,7 +24,7 @@ function Navbar({ page }) {
     <div className="header">
       <div className="headerContainer">
         <div className="headerLeft">
-          <div className="styles.debsoc">DEBSOC</div>
+          <div className="debsoc">CARBOGO</div>
         </div>
         <div className="headerRight">
           <div className="menuList">
