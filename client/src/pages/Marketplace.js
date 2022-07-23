@@ -50,6 +50,7 @@ function Marketplace() {
   }
 
   return (
+    <div>
     <div className="Market">
 
       <button className="btns" 
@@ -67,6 +68,10 @@ function Marketplace() {
         BUY NFT
       </button>
 
+    </div>
+    <div className="Market">
+      <h1 style={{color:"white",fontSize:"20px",fontStyle:"italic"}}>"Revolutionalizing the way you think about carbon footprint"</h1>
+    </div>
     </div>
   );
 }
