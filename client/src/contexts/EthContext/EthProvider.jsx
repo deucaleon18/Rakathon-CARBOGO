@@ -9,29 +9,28 @@ function EthProvider({ children }) {
 
   const init = useCallback(
 
-    async (artifact1,artifact2) => {
-      if (artifact1&&artifact2) {
+    async (artifact) => {
+      if (artifact) {
         const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
         const accounts = await web3.eth.requestAccounts();
         const networkID = await web3.eth.net.getId();
 
-        const abi1 = artifact1.abi;
-        const abi2 = artifact2.abi;
-        let address1,address2, contract1,contract2;
+   
+        const abi = artifact.abi;
+        let address,contract;
 
         try {
-          address1= artifact1.networks[networkID].address;
-          address2= artifact2.networks[networkID].address;
-          
-          contract1 = new web3.eth.Contract(abi1, address1);
-          contract2 = new web3.eth.Contract(abi2, address2);
+          address= artifact.networks[networkID].address;
+         
+          contract = new web3.eth.Contract(abi, address);
+          console.log(contract)
        
         } catch (err) {
           console.error(err);
         }
         dispatch({
           type: actions.init,
-          data: { artifact1,artifact2, web3, accounts,address1,address2, networkID, contract1,contract2 }
+          data: { artifact, web3, accounts,address, networkID, contract }
         });
       }
     }, []);
@@ -42,9 +41,8 @@ function EthProvider({ children }) {
   useEffect(() => {
     const tryInit = async () => {
       try {
-        const artifact1 = require("../../contracts/NftMarketplace.json");
-        const artifact2 = require("../../contracts/BasicNft.json")
-        init(artifact1,artifact2);
+        const artifact = require("../../contracts/NftMarketplace.json");
+        init(artifact);
       } catch (err) {
         console.error(err);
       }

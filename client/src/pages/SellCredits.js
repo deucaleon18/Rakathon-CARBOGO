@@ -5,7 +5,7 @@ function SellCredit() {
     return (
      <>
      <div className="Factories">
-     <h1>RECENTLY USED</h1>
+     <h1>RECENTLY LISTED</h1>
      <div className="factoryList">
      <div className="list">
         <img src="Images/leaf.png" alt="" />

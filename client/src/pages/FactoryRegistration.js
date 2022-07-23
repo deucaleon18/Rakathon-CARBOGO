@@ -5,14 +5,13 @@ import useEth from "../contexts/EthContext/useEth";
 
 function FactoriesRegistration() {
 
-  const { state: { web3,contract1,contract2, accounts,address1,address2 } } = useEth();
+  const { state: { web3,contract, accounts,address } } = useEth();
   const [factoryName,setFactoryName]=useState("")
   const [name,setName]=useState("")
 
   const registerFactory=async(e)=>{
     e.preventDefault()
-
-    await contract1.methods.addFactory(accounts[0],name,factoryName).send({from:accounts[0]})
+    await contract.methods.addFactory(accounts[0],name,factoryName).send({from:accounts[0]})
     .then((res)=>{
       console.log(res)
     })
@@ -36,7 +35,7 @@ function FactoriesRegistration() {
               onChange={(e)=>{setFactoryName(e.target.value)}}
               className="input"
               type="text"
-              placeholder="Email or Phone"
+              placeholder=" Factory Name"
               id="username"
             />
 
