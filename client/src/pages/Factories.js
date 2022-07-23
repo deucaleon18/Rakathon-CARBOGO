@@ -1,8 +1,27 @@
 import "../styles/Factories.css"
+import { useState ,useEffect} from "react";
+import useEth from "../contexts/EthContext/useEth";
+
 
 function Factories() {
-
    const { state: { web3,contract1,contract2, accounts,address1,address2 } } = useEth();
+   // useEffect(()=>{
+   //    const getFactories=async()=>{
+   //    //   for(let i=0;i<accounts.length;i++){
+   //       await contract1.methods.getFactory(accounts[0]).call().then((res)=>{
+   //          console.log(res)
+   //       })
+   //       .catch((err)=>{
+   //          console.log(err)
+   //       })
+   //    //   }
+         
+   //    }
+   //    getFactories()
+   // },[])
+
+
+
     return (
 
      <>

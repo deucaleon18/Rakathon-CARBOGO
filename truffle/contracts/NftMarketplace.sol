@@ -1,9 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.14;
 
-import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-
 // Check out https://github.com/Fantom-foundation/Artion-Contracts/blob/5c90d2bc0401af6fb5abf35b860b762b31dfee02/contracts/FantomMarketplace.sol
 // For a full decentralized nft marketplace
 
@@ -13,11 +10,13 @@ error NotListed(address nftAddress, uint256 tokenId);
 error AlreadyListed(address nftAddress, uint256 tokenId);
 error NoProceeds();
 error NotOwner();
-// error NotApprovedForMarketplace();
 error PriceMustBeAboveZero();
 
 
-contract NftMarketplace is ReentrancyGuard {
+contract NftMarketplace  {
+
+    uint256 public s_tokenCounter=0;
+    uint256 public s_factoryCounter=0;
 
     struct Listing {
         uint256 price;
@@ -51,12 +50,7 @@ contract NftMarketplace is ReentrancyGuard {
         uint256 price
     );
 
-    event ItemCanceled(
-        address indexed seller,
-        address indexed nftAddress,
-        uint256 indexed tokenId
-    );
-
+  
     event ItemBought(
         address indexed buyer,
         address indexed nftAddress,
@@ -154,7 +148,6 @@ contract NftMarketplace is ReentrancyGuard {
         s_factories[_owner].paper+=_paper;
         s_factories[_owner].water+=_water;
        emit FactoryEdited(s_factories[_owner].owner,s_factories[_owner].paper,s_factories[_owner].electricity,s_factories[_owner].water);
-
     }
     /*
      * @notice Method for cancelling listing
@@ -213,7 +206,7 @@ contract NftMarketplace is ReentrancyGuard {
     )
         external
         isListed(nftAddress, tokenId)
-        nonReentrant
+
         isOwner(nftAddress, tokenId, msg.sender)
     {
         s_listings[nftAddress][tokenId].price = newPrice;
@@ -245,7 +238,9 @@ contract NftMarketplace is ReentrancyGuard {
         return s_listings[nftAddress][tokenId];
     }
 
-    
+    function getFactory(address _owner) external view returns(Factory memory){
+       return s_factories[_owner];
+    }
 
     function getProceeds(address seller) external view returns (uint256) {
         return s_proceeds[seller];

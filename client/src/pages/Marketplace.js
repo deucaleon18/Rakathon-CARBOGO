@@ -4,8 +4,6 @@ import "../styles/Marketplace.css"
 
 function Marketplace() {
   const { state: { web3,contract1,contract2, accounts,address1,address2 } } = useEth();
-
-  
   const [tokenId,setTokenId]=useState(0)
   const [nftCount,setNftCount]=useState(0)
 //   let nfts=[]
@@ -59,7 +57,7 @@ function Marketplace() {
         setTokenId(res.events.CarbonMinted.returnValues.tokenId)
         console.log(address2)
         
-        await contract1.methods.listItem(address2,tokenId,web3.utils.toWei('15','ether')).send({from:accounts[0]})
+        await contract1.methods.listItem(address2,tokenId,web3.utils.toWei('15','ether')).send({from:accounts[0],gas:21000})
         .then((data)=>{
             setNftCount(nftCount+1)
             console.log(data)
@@ -83,7 +81,7 @@ function Marketplace() {
 
     console.log('hello')
 
-    await contract1.methods.buyItem(address2,0).send({from:accounts[0]}).then((res)=>{
+    await contract1.methods.buyItem(address2,0).send({from:accounts[0],gas:21000}).then((res)=>{
         console.log(res)
     })
     .catch((err)=>{

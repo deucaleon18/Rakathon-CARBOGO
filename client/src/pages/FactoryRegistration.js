@@ -9,7 +9,6 @@ function FactoriesRegistration() {
   const [factoryName,setFactoryName]=useState("")
   const [name,setName]=useState("")
 
-
   const registerFactory=async(e)=>{
     e.preventDefault()
 
